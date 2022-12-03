@@ -14,12 +14,12 @@ function Set-Proxy($emu){
 	Write-Host "请先在 模拟器设置 中打开 高级-Android调试（ADB）" -ForegroundColor yellow
 	$defaultDomain = "10.0.2.3"
 	Write-Host "请输入你需要设置代理的 主机地址/IP。"
-	Write-Information "蓝叠模拟器默认的真实主机 IP 为 $defaultDomain，推荐直接回车保持默认"
+	Write-Host "蓝叠模拟器默认的真实主机 IP 为 $defaultDomain，推荐直接回车保持默认" -ForegroundColor Yellow
 	$proxyIP = Read-Host "主机地址/IP"
 	if ($proxyIP.length -eq 0) {$proxyIP = $defaultDomain}
 	
 	Write-Host "请输入你的 HTTP 代理服务器端口，请在你的代理服务上进行检查。"
-	Write-Information "直接回车或输入 0 代表关闭模拟器的代理设置"
+	Write-Host "直接回车或输入 0 代表关闭模拟器的代理设置" -ForegroundColor Yellow
 	$proxyPort = Read-Host "代理端口"
 	$proxy = if (($proxyPort.length -eq 0) -or ($proxyPort -eq 0)) {
 			Write-Host "关闭 $($emu.DisplayName) 代理"
