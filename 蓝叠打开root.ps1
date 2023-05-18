@@ -12,7 +12,7 @@ $file = Get-Item $confPath
 #获取文件内容
 $conf = Get-Content -Path $file -Encoding utf8
 #正则表达式替换文件 root 值
-$conf = $conf -replace "^(bst\.(?:feature\.rooting|instance\.Nougat64(?:_\d+)?\.enable_root_access))=`"\d`"", "`$1=`"$root`""
+$conf = $conf -replace "^(bst\.(?:feature\.rooting|instance\.\w+(?:_\d+)?\.enable_root_access))=`"\d`"", "`$1=`"$root`""
 #先以Linux换行符合并后，再强制写入文件（覆盖只读），但是 PS 5.1 不支持 utf8noBom，导致蓝叠无法识别，因此无法使用
 #$conf -join "`n" | Out-File -FilePath $file -Encoding utf8NoBOM -Force -NoNewline
 #先关掉文件的只读才能进行写入
